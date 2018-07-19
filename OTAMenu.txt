@@ -1,0 +1,22 @@
+----Main Menu----
+1.Batch Management
+2.User Management
+3.Exit
+
+----Batch Menu-----
+1. Register Batch
+2. Update Batch
+3. Delete Batch
+4. List Batch
+0. Go Back To Main Menu
+
+-----User Menu-----
+
+1. Register User
+2. Authenticate User
+3. List User
+4. Remove User
+5. Update User
+6. Find User By Property
+0. Go Back To Main Menu
+
