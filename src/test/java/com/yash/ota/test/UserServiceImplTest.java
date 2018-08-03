@@ -28,12 +28,12 @@ public class UserServiceImplTest {
         user = new User();
         user.setId(1);
         user.setBatchId(1);
-        user.setFirstName("Jay");
-        user.setLastName("Shah");
-        user.setEmail("jay.shah@yash.com");
+        user.setFirstName("Emily");
+        user.setLastName("Jones");
+        user.setEmail("xxx.xxx@xxx.com");
         user.setContact(12345);
-        user.setLoginName("s.jay93");
-        user.setPassword("Jvsshah@12");
+        user.setLoginName("user");
+        user.setPassword("password1");
         userList = new ArrayList<>();
         userList.add(user);
     }
@@ -62,14 +62,14 @@ public class UserServiceImplTest {
     public void testAuthenticateUser_GivenIncorrectDetails_ShouldThrowAuthenticationException() throws UserAuthenticationException {
         Mockito.when(userDAO.insert(user)).thenReturn(true);
         Mockito.when(userDAO.list()).thenReturn(userList);
-        Assert.assertEquals(userService.authenticateUser("s.jay93", "Jvsshah@1"), user);
+        Assert.assertEquals(userService.authenticateUser("user", "password"), user);
     }
 
     @Test
     public void testAuthenticateUser_GivenCorrectDetails_ShouldReturnUserObject() throws UserAuthenticationException {
         Mockito.when(userDAO.insert(user)).thenReturn(true);
         Mockito.when(userDAO.list()).thenReturn(userList);
-        Assert.assertEquals(userService.authenticateUser("s.jay93", "Jvsshah@12"), user);
+        Assert.assertEquals(userService.authenticateUser("user", "password1"), user);
     }
 
     @Test(expected = EmptyUserDetailsException.class)
@@ -84,7 +84,7 @@ public class UserServiceImplTest {
         user2.setLoginName(user.getLoginName());
         user2.setEmail(user.getEmail());
         user2.setContact(user.getContact());
-        user2.setPassword("Jvsshah@1");
+        user2.setPassword("passwor");
         Assert.assertFalse(userService.removeUser(user2));
     }
 
@@ -109,7 +109,7 @@ public class UserServiceImplTest {
         Mockito.when(userDAO.insert(user)).thenReturn(true);
         Mockito.when(userDAO.list()).thenReturn(userList);
         User user2 = new User();
-        user2.setFirstName("Jay Viren");
+        user2.setFirstName("Emilia Clarke");
         user2.setLastName(user.getLastName());
         user2.setId(1);
         user2.setBatchId(user.getBatchId());
@@ -131,6 +131,6 @@ public class UserServiceImplTest {
     public void testFindUserByProperty_GivenUserThatExists_ShouldReturnThatParticularUser() throws EmptyUserDetailsException {
         Mockito.when(userDAO.insert(user)).thenReturn(true);
         Mockito.when(userDAO.list()).thenReturn(userList);
-        Assert.assertEquals(userService.findUserByProperty("Email", "jay.shah@yash.com"), user);
+        Assert.assertEquals(userService.findUserByProperty("Email", "xxx.xxx@xxx.com"), user);
     }
 }
