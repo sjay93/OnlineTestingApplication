@@ -16,7 +16,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean insert(User user) {
-        BufferedWriter bufferedWriter = null;
+        BufferedWriter bufferedWriter;
         try {
             if (!userFile.exists())
                 userFile.createNewFile();
